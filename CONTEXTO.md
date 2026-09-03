@@ -24,7 +24,7 @@ Es un proyecto **independiente** del dashboard admin (`cpz-semaforo`), pero comp
 ```js
 var payload = {
   action: state.tipo === 'solicitud' ? 'solicitud_cpz' : 'oferta_casa',
-  nombre, whatsapp, alcaldia, colonia, diaPreferencia, horarioPreferencia
+  nombre, whatsapp, alcaldia, colonia, codigoPostal, diaPreferencia, horarioPreferencia
 };
 fetch(APPS_SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
 ```
@@ -39,8 +39,8 @@ https://script.google.com/macros/s/AKfycbxdjkzbfwoGvkppQWf_5dMzolWTJ-k0VZUg2Hryu
 
 | Hoja | Columnas |
 |---|---|
-| `SOLICITUDES_CPZ` | TIMESTAMP · NOMBRE · WHATSAPP · ALCALDIA · COLONIA · DIA_PREFERENCIA · HORARIO_PREFERENCIA · ESTATUS |
-| `OFERTAS_CASA` | TIMESTAMP · NOMBRE · WHATSAPP · ALCALDIA · COLONIA · DIA_PREFERENCIA · HORARIO_PREFERENCIA · ESTATUS |
+| `SOLICITUDES_CPZ` | TIMESTAMP · NOMBRE · WHATSAPP · ALCALDIA · COLONIA · CODIGO_POSTAL · DIA_PREFERENCIA · HORARIO_PREFERENCIA · ESTATUS |
+| `OFERTAS_CASA` | TIMESTAMP · NOMBRE · WHATSAPP · ALCALDIA · COLONIA · CODIGO_POSTAL · DIA_PREFERENCIA · HORARIO_PREFERENCIA · ESTATUS |
 
 `ESTATUS` se guarda como `"Pendiente"` al crear la fila.
 

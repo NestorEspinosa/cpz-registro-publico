@@ -212,9 +212,15 @@ body{
         <option>Otro (municipio fuera de CDMX)</option>
       </select>
     </div>
-    <div class="campo">
-      <label>Colonia</label>
-      <input type="text" id="f-colonia" placeholder="Ej. Toriello Guerra">
+    <div class="campo-row">
+      <div class="campo" style="flex:2">
+        <label>Colonia</label>
+        <input type="text" id="f-colonia" placeholder="Ej. Toriello Guerra">
+      </div>
+      <div class="campo" style="flex:1">
+        <label>Código postal</label>
+        <input type="text" id="f-cp" placeholder="5 dígitos" maxlength="5" inputmode="numeric">
+      </div>
     </div>
     <div class="campo-row">
       <div class="campo">
@@ -298,6 +304,7 @@ function mostrarFormulario(tipo) {
   document.getElementById('f-whatsapp').value = '';
   document.getElementById('f-alcaldia').value = '';
   document.getElementById('f-colonia').value = '';
+  document.getElementById('f-cp').value = '';
   document.getElementById('f-dia').value = 'Cualquier día';
   document.getElementById('f-horario').value = 'Cualquiera';
 
@@ -317,6 +324,7 @@ function enviarFormulario() {
   var whatsapp = document.getElementById('f-whatsapp').value.replace(/\D/g, '');
   var alcaldia = document.getElementById('f-alcaldia').value;
   var colonia = document.getElementById('f-colonia').value.trim();
+  var cp = document.getElementById('f-cp').value.replace(/\D/g, '');
   var dia = document.getElementById('f-dia').value;
   var horario = document.getElementById('f-horario').value;
   var errorEl = document.getElementById('form-error');
@@ -325,6 +333,7 @@ function enviarFormulario() {
   if (whatsapp.length !== 10) { errorEl.textContent = 'Escribe un número de WhatsApp válido (10 dígitos).'; return; }
   if (!alcaldia) { errorEl.textContent = 'Selecciona tu alcaldía.'; return; }
   if (!colonia) { errorEl.textContent = 'Escribe tu colonia.'; return; }
+  if (cp.length !== 5) { errorEl.textContent = 'Escribe un código postal válido (5 dígitos).'; return; }
   errorEl.textContent = '';
 
   var btn = document.getElementById('btn-enviar');
@@ -336,6 +345,7 @@ function enviarFormulario() {
     nombre: nombre,
     whatsapp: whatsapp,
     alcaldia: alcaldia,
+    codigoPostal: cp,
     colonia: colonia,
     diaPreferencia: dia,
     horarioPreferencia: horario
