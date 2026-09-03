@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casas de Paz — Regístrate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#F2EFE7;
+  --surface:#FFFFFF;
+  --surface2:#F7F4EC;
+  --border:#E9E2D4;
+  --text:#313837;
+  --muted:#7B817A;
+  --primary:#16807F;
+  --on-primary:#FFFFFF;
+  --accent:#2BAEC0;
+  --accent-soft:#E2F3F5;
+  --radius:19px;
+  --radius-lg:26px;
+  --shadow:0 1px 2px rgba(16,40,38,.04),0 10px 30px -16px rgba(16,40,38,.22);
+  --shadow-sm:0 1px 2px rgba(16,40,38,.05),0 2px 8px -4px rgba(16,40,38,.10);
+  --rojo:#DC5A4D;
+  --casitas-img:url('assets/casitas.png');
+  --casitas-opacity:.85;
+  --logo-img:url('assets/casa-de-paz.png');
+  --seal-img:url('assets/seal-teal.png');
+}
+:root[data-theme="dark"]{
+  --bg:#121E1C;
+  --surface:#192826;
+  --surface2:#16211F;
+  --border:#31403D;
+  --text:#ECEAE0;
+  --muted:#9AA39C;
+  --primary:#34B4AE;
+  --on-primary:#06201F;
+  --accent:#54C8D8;
+  --accent-soft:#13332F;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -16px rgba(0,0,0,.65);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.2),0 2px 8px -4px rgba(0,0,0,.35);
+  --rojo:#EB6B5D;
+  --casitas-img:url('assets/casitas-light.png');
+  --casitas-opacity:.45;
+  --logo-img:url('assets/casa-de-paz-white.png');
+  --seal-img:url('assets/seal-white.png');
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121E1C; --surface:#192826; --surface2:#16211F; --border:#31403D;
+    --text:#ECEAE0; --muted:#9AA39C; --primary:#34B4AE; --on-primary:#06201F;
+    --accent:#54C8D8; --accent-soft:#13332F;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -16px rgba(0,0,0,.65);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.2),0 2px 8px -4px rgba(0,0,0,.35);
+    --rojo:#EB6B5D;
+    --casitas-img:url('assets/casitas-light.png'); --casitas-opacity:.45;
+    --logo-img:url('assets/casa-de-paz-white.png'); --seal-img:url('assets/seal-white.png');
+  }
+}
+body{
+  margin:0;font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);
+  min-height:100vh;position:relative;overflow-x:hidden;
+}
+.blob-1,.blob-2{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.blob-1{top:-120px;right:-80px;background:var(--accent);opacity:.13}
+.blob-2{bottom:-120px;left:-80px;background:var(--primary);opacity:.12}
+.casitas-footer{position:fixed;bottom:0;left:0;right:0;height:90px;background:var(--casitas-img) bottom/auto 90px repeat-x;opacity:var(--casitas-opacity);pointer-events:none;z-index:0}
+.theme-btn{
+  position:fixed;top:18px;right:18px;z-index:10;width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)
+}
+.theme-btn:hover{color:var(--primary)}
+.wrap{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px 110px}
+.card{
+  position:relative;z-index:1;background:var(--surface);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);padding:36px 32px;width:100%;max-width:460px;text-align:center;
+}
+.logo{height:62px;margin:0 auto 14px;object-fit:contain;display:block}
+.script{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.title-row{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:4px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--primary)}
+.title{font-family:'Archivo',sans-serif;font-size:24px;font-weight:800;color:var(--text)}
+.sub{font-size:13.5px;font-weight:600;color:var(--muted);margin-bottom:28px}
+.opciones{display:flex;flex-direction:column;gap:14px}
+.opcion-btn{
+  display:flex;align-items:center;gap:14px;text-align:left;width:100%;
+  padding:18px 18px;border-radius:16px;border:1.5px solid var(--border);background:var(--surface2);
+  cursor:pointer;transition:all .15s;font-family:inherit;color:var(--text);
+}
+.opcion-btn:hover{border-color:var(--primary);background:var(--accent-soft);transform:translateY(-1px)}
+.opcion-icon{font-size:26px;flex-shrink:0}
+.opcion-text{flex:1}
+.opcion-titulo{font-weight:800;font-size:15px;margin-bottom:2px}
+.opcion-desc{font-size:12.5px;color:var(--muted);font-weight:500}
+
+.form-title{font-family:'Archivo',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px;text-align:left}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:22px;text-align:left}
+.campo{margin-bottom:16px;text-align:left}
+.campo label{display:block;font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:7px}
+.campo input,.campo select{
+  width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;
+  background:var(--surface2);color:var(--text);font-size:14px;font-family:inherit;
+}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--primary)}
+.campo-row{display:flex;gap:10px}
+.campo-row .campo{flex:1}
+.error-msg{font-size:12.5px;color:var(--rojo);margin-bottom:12px;min-height:16px;text-align:left}
+.btn-primary{
+  width:100%;padding:14px;border:none;border-radius:14px;background:var(--primary);color:var(--on-primary);
+  font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;transition:all .15s;
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 28px -12px var(--primary)}
+.btn-primary:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+.btn-volver{
+  display:block;margin-top:16px;text-align:center;font-size:13px;font-weight:700;color:var(--muted);
+  background:none;border:none;cursor:pointer;font-family:inherit;width:100%
+}
+.btn-volver:hover{color:var(--primary)}
+
+.gracias-icon{font-size:52px;margin-bottom:10px}
+.gracias-title{font-family:'Archivo',sans-serif;font-size:21px;font-weight:800;margin-bottom:10px}
+.gracias-text{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:26px}
+
+.oculto{display:none !important}
+
+@media(max-width:480px){
+  .card{padding:28px 22px}
+  .campo-row{flex-direction:column;gap:0}
+}
+</style>
+</head>
+<body>
+
+<div class="blob-1"></div>
+<div class="blob-2"></div>
+<div class="casitas-footer"></div>
+
+<button class="theme-btn" onclick="toggleTheme()" title="Cambiar tema">
+  <svg id="icon-theme" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<div class="wrap">
+
+  <!-- ═══ PANTALLA: INICIO ═══ -->
+  <div class="card" id="pantalla-inicio">
+    <img class="logo" src="assets/casa-de-paz.png" id="logo-img" alt="Casa de Paz">
+    <div class="script">¡Bienvenido!</div>
+    <div class="title-row">
+      <div class="dot"></div>
+      <div class="title">Casas de Paz</div>
+    </div>
+    <div class="sub">Encuentra tu Casa de Paz o abre las puertas de la tuya</div>
+
+    <div class="opciones">
+      <button class="opcion-btn" onclick="mostrarFormulario('solicitud')">
+        <span class="opcion-icon">🏠</span>
+        <span class="opcion-text">
+          <div class="opcion-titulo">Quiero que me asignen una Casa de Paz</div>
+          <div class="opcion-desc">Te conectamos con la más cercana a tu domicilio</div>
+        </span>
+      </button>
+      <button class="opcion-btn" onclick="mostrarFormulario('oferta')">
+        <span class="opcion-icon">🙌</span>
+        <span class="opcion-text">
+          <div class="opcion-titulo">Quiero ofrecer mi casa para una Casa de Paz</div>
+          <div class="opcion-desc">Abre tu hogar para reunir a tu comunidad</div>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ PANTALLA: FORMULARIO ═══ -->
+  <div class="card oculto" id="pantalla-formulario">
+    <div class="form-title" id="form-title">—</div>
+    <div class="form-sub" id="form-sub">—</div>
+
+    <div class="campo">
+      <label>Nombre completo</label>
+      <input type="text" id="f-nombre" placeholder="Ej. María González">
+    </div>
+    <div class="campo">
+      <label>WhatsApp</label>
+      <input type="tel" id="f-whatsapp" placeholder="10 dígitos" maxlength="10" inputmode="numeric">
+    </div>
+    <div class="campo">
+      <label>Alcaldía</label>
+      <select id="f-alcaldia">
+        <option value="">Selecciona tu alcaldía…</option>
+        <option>Álvaro Obregón</option>
+        <option>Azcapotzalco</option>
+        <option>Benito Juárez</option>
+        <option>Coyoacán</option>
+        <option>Cuajimalpa de Morelos</option>
+        <option>Cuauhtémoc</option>
+        <option>Gustavo A. Madero</option>
+        <option>Iztacalco</option>
+        <option>Iztapalapa</option>
+        <option>La Magdalena Contreras</option>
+        <option>Miguel Hidalgo</option>
+        <option>Milpa Alta</option>
+        <option>Tláhuac</option>
+        <option>Tlalpan</option>
+        <option>Venustiano Carranza</option>
+        <option>Xochimilco</option>
+      </select>
+    </div>
+    <div class="campo">
+      <label>Colonia</label>
+      <input type="text" id="f-colonia" placeholder="Ej. Toriello Guerra">
+    </div>
+    <div class="campo-row">
+      <div class="campo">
+        <label>Día de preferencia</label>
+        <select id="f-dia">
+          <option value="Cualquier día">Cualquier día</option>
+          <option>Lunes</option>
+          <option>Martes</option>
+          <option>Miércoles</option>
+          <option>Jueves</option>
+          <option>Viernes</option>
+          <option>Sábado</option>
+          <option>Domingo</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Horario de preferencia</label>
+        <select id="f-horario">
+          <option value="Cualquiera">Cualquiera</option>
+          <option>Mañana</option>
+          <option>Tarde</option>
+          <option>Noche</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="error-msg" id="form-error"></div>
+    <button class="btn-primary" id="btn-enviar" onclick="enviarFormulario()">Enviar</button>
+    <button class="btn-volver" onclick="mostrarPantalla('inicio')">← Volver</button>
+  </div>
+
+  <!-- ═══ PANTALLA: GRACIAS ═══ -->
+  <div class="card oculto" id="pantalla-gracias">
+    <div class="gracias-icon">✅</div>
+    <div class="gracias-title">¡Gracias por tu registro!</div>
+    <div class="gracias-text">Hemos recibido tu información. Nos pondremos en contacto contigo por WhatsApp muy pronto.</div>
+    <button class="btn-primary" onclick="mostrarPantalla('inicio')">Volver al inicio</button>
+  </div>
+
+</div>
+
+<script>
+/* ─── CONFIG ──────────────────────────────────────────────── */
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdjkzbfwoGvkppQWf_5dMzolWTJ-k0VZUg2Hryu5QBgp2p_UQa8EfFre8ri2AfVPdHFQ/exec';
+
+var state = { tipo: null };
+
+/* ─── TEMA ────────────────────────────────────────────────── */
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  try { localStorage.setItem('theme', t); } catch (e) {}
+  var moonSvg = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  var sunSvg = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  document.getElementById('icon-theme').innerHTML = t === 'dark' ? sunSvg : moonSvg;
+  var logoEl = document.getElementById('logo-img');
+  if (logoEl) logoEl.src = t === 'dark' ? 'assets/casa-de-paz-white.png' : 'assets/casa-de-paz.png';
+}
+function toggleTheme() {
+  var cur = document.documentElement.getAttribute('data-theme');
+  applyTheme(cur === 'dark' ? 'light' : 'dark');
+}
+(function initTheme() {
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  if (saved) applyTheme(saved);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme('dark');
+})();
+
+/* ─── NAVEGACIÓN ──────────────────────────────────────────── */
+function mostrarPantalla(nombre) {
+  ['inicio', 'formulario', 'gracias'].forEach(function(p) {
+    document.getElementById('pantalla-' + p).classList.toggle('oculto', p !== nombre);
+  });
+  window.scrollTo(0, 0);
+}
+
+function mostrarFormulario(tipo) {
+  state.tipo = tipo;
+  document.getElementById('form-error').textContent = '';
+  document.getElementById('f-nombre').value = '';
+  document.getElementById('f-whatsapp').value = '';
+  document.getElementById('f-alcaldia').value = '';
+  document.getElementById('f-colonia').value = '';
+  document.getElementById('f-dia').value = 'Cualquier día';
+  document.getElementById('f-horario').value = 'Cualquiera';
+
+  if (tipo === 'solicitud') {
+    document.getElementById('form-title').textContent = '🏠 Solicitar Casa de Paz';
+    document.getElementById('form-sub').textContent = 'Cuéntanos un poco de ti para encontrar la Casa de Paz más cercana.';
+  } else {
+    document.getElementById('form-title').textContent = '🙌 Ofrecer mi casa';
+    document.getElementById('form-sub').textContent = 'Cuéntanos de ti y tu domicilio para coordinar una Casa de Paz.';
+  }
+  mostrarPantalla('formulario');
+}
+
+/* ─── ENVÍO ───────────────────────────────────────────────── */
+function enviarFormulario() {
+  var nombre = document.getElementById('f-nombre').value.trim();
+  var whatsapp = document.getElementById('f-whatsapp').value.replace(/\D/g, '');
+  var alcaldia = document.getElementById('f-alcaldia').value;
+  var colonia = document.getElementById('f-colonia').value.trim();
+  var dia = document.getElementById('f-dia').value;
+  var horario = document.getElementById('f-horario').value;
+  var errorEl = document.getElementById('form-error');
+
+  if (!nombre) { errorEl.textContent = 'Escribe tu nombre completo.'; return; }
+  if (whatsapp.length !== 10) { errorEl.textContent = 'Escribe un número de WhatsApp válido (10 dígitos).'; return; }
+  if (!alcaldia) { errorEl.textContent = 'Selecciona tu alcaldía.'; return; }
+  if (!colonia) { errorEl.textContent = 'Escribe tu colonia.'; return; }
+  errorEl.textContent = '';
+
+  var btn = document.getElementById('btn-enviar');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  var payload = {
+    action: state.tipo === 'solicitud' ? 'solicitud_cpz' : 'oferta_casa',
+    nombre: nombre,
+    whatsapp: whatsapp,
+    alcaldia: alcaldia,
+    colonia: colonia,
+    diaPreferencia: dia,
+    horarioPreferencia: horario
+  };
+
+  fetch(APPS_SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) })
+    .then(function() {
+      mostrarPantalla('gracias');
+    })
+    .catch(function() {
+      errorEl.textContent = 'No se pudo enviar. Verifica tu conexión e intenta de nuevo.';
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = 'Enviar';
+    });
+}
+</script>
+</body>
+</html>
